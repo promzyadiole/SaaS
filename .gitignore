@@ -43,3 +43,16 @@ next-env.d.ts
 
 
 week1/
+
+# Python
+__pycache__/
+*.pyc
+
+# Env
+.env
+.env.local
+api/.env
+
+# Node
+node_modules/
+.next/
