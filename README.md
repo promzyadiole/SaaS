@@ -1,40 +1,163 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# MediNotes Pro — AI Healthcare Consultation Assistant (SaaS)
 
-## Getting Started
+MediNotes Pro is an AI-powered healthcare SaaS platform that transforms clinical consultation notes into:
 
-First, run the development server:
+- Professional summaries
+- Action items
+- Patient-friendly email communications
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The platform uses AI to help clinicians save time, improve documentation quality, and streamline patient communication.
+
+---
+
+## Tech Stack
+
+### Frontend
+- Next.js (React + TypeScript)
+- Clerk (authentication & subscription management)
+
+### Backend
+- FastAPI
+- OpenAI API
+- Pydantic
+- fastapi-clerk-auth
+
+### Infrastructure
+- Vercel (frontend hosting)
+- AWS (backend deployment planned)
+
+---
+
+## Features
+
+- Secure authentication with Clerk
+- Protected app routes
+- AI-generated consultation summaries
+- Automatic action item extraction
+- Patient email drafting
+- SaaS-ready architecture
+
+---
+
+## Project Structure
+
+```text
+saas/
+│
+├── pages/                # Next.js frontend pages
+├── styles/               # Frontend styling
+├── api/
+│   ├── index.py          # FastAPI app entrypoint
+│   └── .env.example      # Backend env template
+│
+├── public/
+├── requirements.txt      # Python dependencies
+├── package.json          # Node dependencies
+├── .env.example          # Frontend env template
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+# Local Development Setup
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 1️⃣ Frontend (Next.js)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+### Install dependencies
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Run development server
+```bash
+npm run dev
+```
 
-## Learn More
+### Open in browser
+```
+http://localhost:3000
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## 2️⃣ Backend (FastAPI)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Install Python dependencies
+```bash
+python3 -m pip install -r requirements.txt
+```
 
-## Deploy on Vercel
+### Run API server
+```bash
+uvicorn api.index:app --reload --port 8000
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Backend runs at
+```
+http://127.0.0.1:8000
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+---
+
+# Environment Variables
+
+Create local environment files:
+
+```bash
+cp .env.example .env.local
+cp api/.env.example api/.env
+```
+
+---
+
+## Frontend (.env.local)
+
+```
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+---
+
+## Backend (api/.env)
+
+```
+OPENAI_API_KEY=
+CLERK_SECRET_KEY=
+PORT=8000
+ENV=development
+```
+
+---
+
+# Security Notes
+
+- Never commit `.env` or `.env.local`
+- Keep API keys private
+- Designed with healthcare data sensitivity (HIPAA-conscious architecture)
+
+---
+
+# Deployment
+
+## Frontend
+- Vercel
+
+## Backend (Recommended AWS Options)
+- App Runner
+- ECS / Fargate
+- EC2 with Docker
+
+---
+
+# Author
+
+Promise Emeziem Adiole  
+AI Engineer | HealthTech Builder | Full-Stack Developer
+
+---
+
+# License
+
+MIT License
