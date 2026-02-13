@@ -131,14 +131,6 @@ ENV=development
 
 ---
 
-# Security Notes
-
-- Never commit `.env` or `.env.local`
-- Keep API keys private
-- Designed with healthcare data sensitivity (HIPAA-conscious architecture)
-
----
-
 # Deployment
 
 ## Frontend
